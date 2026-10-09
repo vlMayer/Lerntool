@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="de"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>05 · Schleifen | Lerntool</title><style>:root{color-scheme:dark;--bg:#0b1020;--panel:#141c30;--text:#edf2ff;--muted:#aab7d2;--accent:#79d7c2;--line:#2b3957}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:16px/1.7 system-ui,sans-serif}.wrap{max-width:850px;margin:auto;padding:28px 22px 60px}a{color:var(--accent)}p,li{color:var(--muted)}h1{font-size:2.5rem;line-height:1.1}.tag{color:var(--accent);text-transform:uppercase;font-size:.8rem;font-weight:bold}pre{overflow:auto;background:#080d19;border:1px solid var(--line);padding:16px;border-radius:12px}code{color:#bcefe3;font-family:ui-monospace,monospace}.box{background:var(--panel);border:1px solid var(--line);padding:16px;border-radius:12px;margin:18px 0}.nav{display:flex;justify-content:space-between;border-top:1px solid var(--line);padding-top:20px;margin-top:38px}</style></head><body><main class="wrap"><a href="../index.html">← Zur Kursübersicht</a><p class="tag">Lektion 05 von 09</p><h1>Schleifen: Wiederholen ohne Kopieren</h1><p>Eine Schleife führt einen Codeblock mehrmals aus. Eine <code>for</code>-Schleife eignet sich, wenn du über eine Sammlung oder eine bekannte Anzahl von Wiederholungen gehst.</p><pre><code>for zahl in range(1, 6):
+    print(zahl)</code></pre><p><code>range(1, 6)</code> erzeugt die Zahlen 1 bis 5: Der Endwert 6 ist nicht enthalten. Ohne Startwert beginnt <code>range(5)</code> bei 0.</p><h2>Über eine Liste gehen</h2><pre><code>farben = ["blau", "grün", "rot"]
+for farbe in farben:
+    print(f"Ich mag {farbe}.")</code></pre><h2>Eine while-Schleife</h2><p>Eine <code>while</code>-Schleife läuft, solange ihre Bedingung wahr ist. Achte darauf, dass sich die Bedingung ändern kann, damit die Schleife irgendwann endet.</p><pre><code>rest = 3
+while rest &gt; 0:
+    print(rest)
+    rest = rest - 1
+print("Los!")</code></pre><p><code>break</code> beendet eine Schleife sofort. <code>continue</code> überspringt den Rest des aktuellen Durchlaufs und beginnt den nächsten.</p><div class="box"><b>Übung</b><p>Gib die Zahlen von 1 bis 10 aus und berechne anschließend ihre Summe.</p><details><summary>Lösung ansehen</summary><pre><code>summe = 0
+for zahl in range(1, 11):
+    print(zahl)
+    summe += zahl
+print(f"Summe: {summe}")</code></pre></details></div><nav class="nav"><a href="04-verzweigungen.html">← Entscheidungen</a><a href="06-datenstrukturen.html">Weiter: Sammlungen →</a></nav></main></body></html>

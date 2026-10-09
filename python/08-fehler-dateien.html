@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="de"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>08 · Fehler und Dateien | Lerntool</title><style>:root{color-scheme:dark;--bg:#0b1020;--panel:#141c30;--text:#edf2ff;--muted:#aab7d2;--accent:#79d7c2;--line:#2b3957}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:16px/1.7 system-ui,sans-serif}.wrap{max-width:850px;margin:auto;padding:28px 22px 60px}a{color:var(--accent)}p,li{color:var(--muted)}h1{font-size:2.5rem;line-height:1.1}.tag{color:var(--accent);text-transform:uppercase;font-size:.8rem;font-weight:bold}pre{overflow:auto;background:#080d19;border:1px solid var(--line);padding:16px;border-radius:12px}code{color:#bcefe3;font-family:ui-monospace,monospace}.box{background:var(--panel);border:1px solid var(--line);padding:16px;border-radius:12px;margin:18px 0}.nav{display:flex;justify-content:space-between;border-top:1px solid var(--line);padding-top:20px;margin-top:38px}</style></head><body><main class="wrap"><a href="../index.html">← Zur Kursübersicht</a><p class="tag">Lektion 08 von 09</p><h1>Fehler behandeln und Dateien lesen</h1><p>Fehlermeldungen helfen, Probleme zu finden. Häufige Ursachen sind Tippfehler, falsche Datentypen oder ein Zugriff auf etwas, das nicht existiert. Lies bei einer Fehlermeldung den Typ und die letzte Zeile zuerst.</p><h2>try und except</h2><pre><code>eingabe = input("Gib eine ganze Zahl ein: ")
+try:
+    zahl = int(eingabe)
+except ValueError:
+    print("Das war keine gültige ganze Zahl.")
+else:
+    print(f"Du hast {zahl} eingegeben.")</code></pre><p>Der Code im <code>try</code>-Block wird versucht. Wenn genau der erwartete Fehler <code>ValueError</code> auftritt, läuft der passende <code>except</code>-Block. Vermeide ein pauschales Abfangen aller Fehler, wenn du nicht weißt, wie du damit umgehen sollst.</p><h2>Dateien mit with öffnen</h2><p>Mit <code>with</code> wird eine Datei nach der Nutzung zuverlässig geschlossen. Der Dateipfad ist relativ zum Arbeitsverzeichnis des Programms.</p><pre><code># Textdatei schreiben
+with open("notiz.txt", "w", encoding="utf-8") as datei:
+    datei.write("Python üben macht Spaß.\n")
+
+# Datei lesen
+with open("notiz.txt", "r", encoding="utf-8") as datei:
+    inhalt = datei.read()
+    print(inhalt)</code></pre><p>Der Modus <code>"w"</code> schreibt neu und überschreibt eine vorhandene Datei; <code>"r"</code> liest. Nutze <code>encoding="utf-8"</code> für Texte mit Umlauten.</p><div class="box"><b>Übung</b><p>Frage eine Zahl ab und gib ihr Quadrat aus. Wenn die Eingabe keine ganze Zahl ist, zeige eine verständliche Meldung.</p><details><summary>Lösung ansehen</summary><pre><code>try:
+    zahl = int(input("Zahl: "))
+    print(f"Quadrat: {zahl ** 2}")
+except ValueError:
+    print("Bitte gib eine ganze Zahl ein.")</code></pre></details></div><nav class="nav"><a href="07-funktionen.html">← Funktionen</a><a href="09-module-projekt.html">Weiter: Abschlussprojekt →</a></nav></main></body></html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="de"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>09 · Module und Abschlussprojekt | Lerntool</title><style>:root{color-scheme:dark;--bg:#0b1020;--panel:#141c30;--text:#edf2ff;--muted:#aab7d2;--accent:#79d7c2;--line:#2b3957}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:16px/1.7 system-ui,sans-serif}.wrap{max-width:850px;margin:auto;padding:28px 22px 60px}a{color:var(--accent)}p,li{color:var(--muted)}h1{font-size:2.5rem;line-height:1.1}.tag{color:var(--accent);text-transform:uppercase;font-size:.8rem;font-weight:bold}pre{overflow:auto;background:#080d19;border:1px solid var(--line);padding:16px;border-radius:12px}code{color:#bcefe3;font-family:ui-monospace,monospace}.box{background:var(--panel);border:1px solid var(--line);padding:16px;border-radius:12px;margin:18px 0}.nav{display:flex;justify-content:space-between;border-top:1px solid var(--line);padding-top:20px;margin-top:38px}</style></head><body><main class="wrap"><a href="../index.html">← Zur Kursübersicht</a><p class="tag">Lektion 09 von 09</p><h1>Module und dein erstes Mini-Projekt</h1><p>Ein Modul ist eine Datei mit wiederverwendbarem Python-Code. Python bringt viele Module mit. Mit <code>import</code> bindest du sie ein.</p><pre><code>import random
+
+geheimzahl = random.randint(1, 5)
+print(geheimzahl)</code></pre><p>Hier stellt das Modul <code>random</code> unter anderem die Funktion <code>randint()</code> bereit. Für ein kleines eigenes Projekt kombinierst du Variablen, Eingaben, Bedingungen, Schleifen und Funktionen.</p><h2>Projekt: Mini-Quiz</h2><p>Das Quiz stellt Fragen, vergleicht die Antworten und zählt die Punkte. Tippe den Code selbst ab und ergänze danach eigene Fragen.</p><pre><code>def stelle_frage(frage, loesung):
+    antwort = input(frage + " ").strip().lower()
+    if antwort == loesung.lower():
+        print("Richtig!")
+        return 1
+    print(f"Noch nicht. Die richtige Antwort ist: {loesung}")
+    return 0
+
+fragen = [
+    ("Welche Funktion gibt Text aus?", "print"),
+    ("Welches Schlüsselwort definiert eine Funktion?", "def"),
+    ("Welcher Typ speichert Wahr oder Falsch?", "bool"),
+]
+
+punkte = 0
+for frage, loesung in fragen:
+    punkte += stelle_frage(frage, loesung)
+
+print(f"Du hast {punkte} von {len(fragen)} Punkten.")</code></pre><h2>Erweiterungen</h2><ul><li>Füge mindestens zwei eigene Fragen hinzu.</li><li>Zeige am Ende eine Nachricht abhängig von der Punktzahl.</li><li>Erlaube pro Frage einen zweiten Versuch.</li><li>Speichere Fragen später in einer Datei und lies sie beim Start ein.</li></ul><div class="box"><b>Du hast die Grundlagen durchgearbeitet.</b><p>Als Nächstes kannst du das Projekt erweitern, eigene Programme bauen und gezielt Bibliotheken für deine Ideen kennenlernen. Nutze die <a href="../index.html">Kursübersicht</a>, um Lektionen zu wiederholen.</p></div><nav class="nav"><a href="08-fehler-dateien.html">← Fehler & Dateien</a><a href="../index.html">Zur Kursübersicht →</a></nav></main></body></html>

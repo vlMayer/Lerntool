@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="de"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>02 · Variablen und Datentypen | Lerntool</title><style>:root{color-scheme:dark;--bg:#0b1020;--panel:#141c30;--text:#edf2ff;--muted:#aab7d2;--accent:#79d7c2;--line:#2b3957}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:16px/1.7 system-ui,sans-serif}.wrap{max-width:850px;margin:auto;padding:28px 22px 60px}a{color:var(--accent)}p,li{color:var(--muted)}h1{font-size:2.5rem;line-height:1.1}.tag{color:var(--accent);text-transform:uppercase;font-size:.8rem;font-weight:bold}pre{overflow:auto;background:#080d19;border:1px solid var(--line);padding:16px;border-radius:12px}code{color:#bcefe3;font-family:ui-monospace,monospace}.box{background:var(--panel);border:1px solid var(--line);padding:16px;border-radius:12px;margin:18px 0}.nav{display:flex;justify-content:space-between;border-top:1px solid var(--line);padding-top:20px;margin-top:38px}</style></head><body><main class="wrap"><a href="../index.html">← Zur Kursübersicht</a><p class="tag">Lektion 02 von 09</p><h1>Variablen und Datentypen</h1><p>Eine Variable ist ein benannter Platz, an dem dein Programm einen Wert ablegen kann. Mit <code>=</code> weist du einer Variablen einen Wert zu.</p><pre><code>name = "Mira"
+alter = 20
+print(name)
+print(alter)</code></pre><h2>Häufige Datentypen</h2><ul><li><code>str</code>: Text, zum Beispiel <code>"Hallo"</code>.</li><li><code>int</code>: ganze Zahl, zum Beispiel <code>42</code>.</li><li><code>float</code>: Kommazahl, zum Beispiel <code>3.14</code> (Python verwendet im Code einen Punkt).</li><li><code>bool</code>: Wahrheitswert, entweder <code>True</code> oder <code>False</code>.</li></ul><pre><code>preis = 12.5
+anzahl = 3
+gesamt = preis * anzahl
+print(gesamt)  # 37.5
+print(type(preis))  # &lt;class 'float'&gt;</code></pre><p>Mit <code>type(wert)</code> kannst du den Typ untersuchen. Variablennamen sollten erklären, wofür der Wert steht, etwa <code>gesamtpreis</code>. Namen beginnen üblicherweise mit einem Buchstaben oder Unterstrich und enthalten keine Leerzeichen.</p><h2>Werte umwandeln</h2><pre><code>zahl_als_text = "25"
+zahl = int(zahl_als_text)
+kommazahl = float("2.5")
+text = str(zahl)
+print(zahl + 5)  # 30</code></pre><p>Die Zeichenfolge <code>"25"</code> ist zunächst Text, keine Zahl. Mit <code>int()</code> wird daraus eine ganze Zahl, sofern der Text passend formatiert ist.</p><div class="box"><b>Übung</b><p>Lege Variablen für Produktname, Einzelpreis und Stückzahl an. Berechne den Gesamtpreis und gib ihn aus.</p><details><summary>Lösung ansehen</summary><pre><code>produkt = "Notizbuch"
+einzelpreis = 4.5
+stueckzahl = 2
+gesamtpreis = einzelpreis * stueckzahl
+print(gesamtpreis)</code></pre></details></div><nav class="nav"><a href="01-start.html">← Einstieg</a><a href="03-eingaben.html">Weiter: Eingaben →</a></nav></main></body></html>

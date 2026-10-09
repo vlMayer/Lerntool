@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="de"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>06 · Datenstrukturen | Lerntool</title><style>:root{color-scheme:dark;--bg:#0b1020;--panel:#141c30;--text:#edf2ff;--muted:#aab7d2;--accent:#79d7c2;--line:#2b3957}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:16px/1.7 system-ui,sans-serif}.wrap{max-width:850px;margin:auto;padding:28px 22px 60px}a{color:var(--accent)}p,li{color:var(--muted)}h1{font-size:2.5rem;line-height:1.1}.tag{color:var(--accent);text-transform:uppercase;font-size:.8rem;font-weight:bold}pre{overflow:auto;background:#080d19;border:1px solid var(--line);padding:16px;border-radius:12px}code{color:#bcefe3;font-family:ui-monospace,monospace}.box{background:var(--panel);border:1px solid var(--line);padding:16px;border-radius:12px;margin:18px 0}.nav{display:flex;justify-content:space-between;border-top:1px solid var(--line);padding-top:20px;margin-top:38px}</style></head><body><main class="wrap"><a href="../index.html">← Zur Kursübersicht</a><p class="tag">Lektion 06 von 09</p><h1>Listen und andere Sammlungen</h1><p>Datenstrukturen halten mehrere Werte zusammen. Eine <code>list</code> ist geordnet und veränderbar. Die Zählung beginnt bei Index 0.</p><pre><code>spiele = ["Portal", "Minecraft", "Celeste"]
+print(spiele[0])  # Portal
+spiele.append("Hades")
+spiele[1] = "Stardew Valley"
+print(len(spiele))</code></pre><p><code>append()</code> fügt hinten etwas an, <code>len()</code> zählt die Elemente. Ein Index außerhalb der Liste führt zu einem Fehler.</p><h2>Tupel, Dictionaries und Sets</h2><pre><code>position = (4, 7)  # Tupel: geordnete, nicht veränderbare Werte
+person = {"name": "Sam", "alter": 22}  # Dictionary: Schlüssel und Werte
+farben = {"blau", "grün", "blau"}  # Set: eindeutige Werte
+print(person["name"])
+print("grün" in farben)</code></pre><ul><li>Verwende eine Liste für eine geordnete, veränderbare Sammlung.</li><li>Verwende ein Tupel für eine geordnete Sammlung, die nach dem Anlegen unverändert bleiben soll.</li><li>Verwende ein Dictionary, wenn Werte über Schlüssel wie <code>"name"</code> gefunden werden.</li><li>Verwende ein Set, wenn Eindeutigkeit wichtig ist und Duplikate entfallen sollen.</li></ul><h2>Durch Sammlungen iterieren</h2><pre><code>noten = [2, 1, 3]
+for note in noten:
+    print(note)
+
+for schluessel, wert in person.items():
+    print(schluessel, wert)</code></pre><div class="box"><b>Übung</b><p>Erstelle eine Liste mit drei Lieblingsfilmen, füge einen vierten hinzu und gib alle Titel nummeriert aus.</p><details><summary>Lösung ansehen</summary><pre><code>filme = ["Film A", "Film B", "Film C"]
+filme.append("Film D")
+for nummer, film in enumerate(filme, start=1):
+    print(f"{nummer}. {film}")</code></pre></details></div><nav class="nav"><a href="05-schleifen.html">← Schleifen</a><a href="07-funktionen.html">Weiter: Funktionen →</a></nav></main></body></html>
