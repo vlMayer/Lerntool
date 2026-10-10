@@ -1,1 +1,38 @@
-FULL_HTML_R1
+<!doctype html>
+<html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>R &amp; RStudio: Grundlagen</title><link rel="stylesheet" href="r-style.css"></head><body><div class="layout"><aside class="sidebar"><a class="brand" href="../index.html">← Lerntool</a><p class="course">R &amp; RStudio</p><nav><a class="active" href="01-rstudio-grundlagen.html">01 · RStudio-Grundlagen</a><a href="02-explorative-statistik.html">02 · Explorative Statistik</a><a href="03-daten-bearbeiten.html">03 · Daten bearbeiten</a><a href="04-daten-strukturieren-inferenz.html">04 · Strukturieren &amp; Inferenz</a></nav><a class="back" href="../index.html">Zur Startseite</a></aside><main><div class="content"><div class="eyebrow">Modul 01 · Einstieg</div><h1>R und RStudio kennenlernen</h1><p class="lead">R ist eine Programmiersprache für Statistik und Datenanalyse. RStudio ist eine Entwicklungsumgebung, die das Schreiben von Skripten, das Verwalten von Daten und das Betrachten von Ergebnissen an einem Ort bündelt.</p>
+<h2>Die Oberfläche von RStudio</h2><p>Die Oberfläche ist typischerweise in vier Bereiche aufgeteilt:</p><ul><li><strong>Konsole:</strong> Befehle direkt ausführen und Ergebnisse ansehen.</li><li><strong>Source/Script:</strong> Code dauerhaft dokumentieren und schrittweise ausführen.</li><li><strong>Environment/History:</strong> geladene Objekte und zuletzt ausgeführte Befehle prüfen.</li><li><strong>Files/Plots/Packages/Help:</strong> Dateien verwalten, Diagramme betrachten, Pakete und Hilfe öffnen.</li></ul><p>Einzelne Bereiche lassen sich über die RStudio-Einstellungen anpassen. Für wiederholbare Analysen ist ein gespeichertes Skript besser als nur in der Konsole zu arbeiten.</p>
+<h2>Pakete installieren und laden</h2><p>Ein Paket erweitert R um zusätzliche Funktionen. Die Installation erfolgt normalerweise einmal pro Computer; in jeder neuen Sitzung muss das Paket geladen werden.</p><pre><code># Einmalig installieren
+install.packages("tidyverse")
+
+# In jeder Sitzung laden
+library(tidyverse)
+
+# Für einzelne Funktionen kann der Namensraum angegeben werden
+readxl::read_excel("Daten/Kaufkraft.xlsx")</code></pre><p>Im Kurskontext sind insbesondere <code>tidyverse</code> für Datenbearbeitung und Visualisierung sowie <code>mosaic</code> für einführende Statistik hilfreich.</p>
+<h2>Skripte und Kommentare</h2><p>Ein R-Skript endet üblicherweise auf <code>.R</code>. Kommentare beginnen mit <code>#</code> und werden nicht ausgeführt. Speichere Analysen als Skript, damit Schritte später nachvollziehbar und wiederholbar bleiben.</p><pre><code># Meine erste kleine Analyse
+x <- 2
+y <- 3
+summe <- x + y
+summe</code></pre><p>Der Zuweisungspfeil <code>&lt;-</code> speichert den rechten Ausdruck unter einem Namen. Das Gleichheitszeichen funktioniert in vielen Zuweisungssituationen ebenfalls, der Pfeil ist in R-Skripten aber sehr verbreitet.</p>
+<h2>Rechnen und Objekte</h2><pre><code>2 + 3
+# [1] 5
+
+preis <- 12.50
+anzahl <- 4
+gesamt <- preis * anzahl
+gesamt</code></pre><p>R gibt häufig einen Vektor zurück. Die Ausgabe <code>[1] 5</code> bedeutet, dass der erste angezeigte Wert 5 ist; bei längeren Vektoren markieren die Zahlen am Zeilenanfang die Position des ersten Werts.</p>
+<h2>Daten einlesen</h2><p>Dateipfade beziehen sich auf das Working Directory. Prüfe es mit <code>getwd()</code>; setze den Projektordner möglichst über ein RStudio-Projekt, statt absolute Pfade fest einzutragen.</p><pre><code># CSV-Datei mit readr (Teil des tidyverse)
+studenten <- readr::read_csv("Daten/datensatz_final.csv")
+
+# Excel-Datei mit readxl
+kaufkraft <- readxl::read_excel("Daten/Kaufkraft.xlsx")
+
+# Erste Zeilen und Struktur prüfen
+head(studenten)
+str(studenten)
+names(studenten)</code></pre><p>Bei CSV-Dateien unterscheiden sich Trennzeichen und Dezimalzeichen je nach Herkunft. Verwende bei Semikolon-getrennten Dateien gegebenenfalls <code>read_csv2()</code> und kontrolliere nach dem Import die Spaltennamen und Datentypen.</p>
+<div class="callout"><strong>Merke:</strong> Installieren ist nicht dasselbe wie Laden. Ein Skript dokumentiert die Analyse; ein RStudio-Projekt hilft, Dateien und Arbeitsverzeichnis zusammenzuhalten.</div>
+<h2>Lernaufgaben</h2><ol><li>Öffne RStudio und benenne die vier typischen Bereiche. Wo findest du die Konsole und wo die geladenen Objekte?</li><li>Erstelle ein neues Skript, speichere es als <code>uebung01.R</code> und berechne den Gesamtpreis von fünf Artikeln zu je 3,40 Euro.</li><li>Installiere (falls nötig) und lade <code>tidyverse</code>. Erkläre in einem Kommentar den Unterschied zwischen <code>install.packages()</code> und <code>library()</code>.</li><li>Lies eine CSV-Datei ein und gib die ersten sechs Zeilen, die Variablennamen sowie die Struktur aus. Was tust du, wenn eine Spalte unerwartet als Text eingelesen wurde?</li></ol><details><summary>Musterlösung zu Aufgabe 2</summary><pre><code>preis <- 3.40
+anzahl <- 5
+gesamt <- preis * anzahl
+gesamt</code></pre></details><p class="next"><a href="02-explorative-statistik.html">Weiter: Explorative Statistik →</a></p><footer>Business Analytics · R-Lernpfad</footer></div></main></div></body></html>

@@ -1,1 +1,39 @@
-FULL_HTML_R3
+<!doctype html>
+<html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>R: Daten bearbeiten</title><link rel="stylesheet" href="r-style.css"></head><body><div class="layout"><aside class="sidebar"><a class="brand" href="../index.html">← Lerntool</a><p class="course">R &amp; RStudio</p><nav><a href="01-rstudio-grundlagen.html">01 · RStudio-Grundlagen</a><a href="02-explorative-statistik.html">02 · Explorative Statistik</a><a class="active" href="03-daten-bearbeiten.html">03 · Daten bearbeiten</a><a href="04-daten-strukturieren-inferenz.html">04 · Strukturieren &amp; Inferenz</a></nav><a class="back" href="../index.html">Zur Startseite</a></aside><main><div class="content"><div class="eyebrow">Modul 03 · Aufbereiten</div><h1>Daten bearbeiten</h1><p class="lead">Mit dem tidyverse lassen sich Datensätze in klar lesbaren Arbeitsschritten auswählen, filtern und erweitern. Die Pipe <code>|&gt;</code> reicht das Ergebnis eines Schritts an den nächsten weiter.</p>
+<h2>Vorbereitung und Pipe</h2><pre><code>library(tidyverse)
+
+# Beispiel: mehrere Operationen nacheinander
+studenten_gesamt <- studenten |>
+  filter(fachgebiet == "Insgesamt") |>
+  select(region, ags, gesamt, regionaler_preisindex_2022)</code></pre><p>Die Pipe unterstützt eine Verarbeitung von oben nach unten: Datensatz nehmen, filtern, Spalten auswählen. R ab Version 4.1 unterstützt die native Pipe <code>|&gt;</code>; alternativ ist in tidyverse-Code häufig <code>%&gt;%</code> zu sehen.</p>
+<h2>Spalten auswählen und anordnen</h2><p><code>select()</code> wählt Variablen aus, <code>relocate()</code> verschiebt ihre Position. Spaltennamen mit Leerzeichen oder Sonderzeichen müssen mit Backticks geschrieben werden.</p><pre><code>studenten |>
+  select(region, fachgebiet, gesamt)
+
+studenten |>
+  relocate(regionaler_preisindex_2022, .after = gesamt) |>
+  select(region:regionaler_preisindex_2022)</code></pre>
+<h2>Zeilen filtern und fehlende Werte</h2><p><code>filter()</code> behält Zeilen, deren Bedingungen wahr sind. Häufige Operatoren: <code>==</code> gleich, <code>!=</code> ungleich, <code>&gt;</code> größer, <code>&amp;</code> und, <code>|</code> oder, <code>!</code> nicht. Fehlende Werte prüft man mit <code>is.na()</code>; ein direkter Vergleich wie <code>x == NA</code> ist nicht korrekt.</p><pre><code># Nur vollständige Werte der Zielvariable
+studenten_ohne_na <- studenten |>
+  filter(!is.na(regionaler_preisindex_2022))
+
+# Mehrere Bedingungen
+studenten |>
+  filter(fachgebiet == "Insgesamt", gesamt > 10000)
+
+# Alle Zeilen ohne fehlende Werte in irgendeiner Spalte
+vollstaendig <- na.omit(studenten)</code></pre><p><code>na.omit()</code> entfernt Zeilen, sobald irgendwo ein fehlender Wert vorkommt. Das kann viele Beobachtungen verwerfen. Prüfe daher, welche Variablen für die jeweilige Analyse gebraucht werden.</p>
+<h2>Neue Variablen mit mutate()</h2><p><code>mutate()</code> fügt Variablen hinzu oder überschreibt bestehende. Verwende <code>if_else()</code> für eine einfache Bedingung und <code>case_when()</code> für mehrere Kategorien.</p><pre><code>studenten |>
+  mutate(ausland_quote = ausland_gesamt / gesamt,
+         ueber_durchschnitt = if_else(gesamt > mean(gesamt, na.rm = TRUE),
+                                      "ja", "nein"))
+
+studenten |>
+  mutate(groesse = case_when(
+    gesamt < 1000 ~ "klein",
+    gesamt < 10000 ~ "mittel",
+    TRUE ~ "gross"
+  ))</code></pre><p>Bei Anteilen sollte der Nenner sinnvoll und nicht null sein. Prüfe außerdem, ob fehlende Werte zu unerwarteten Ergebnissen führen.</p>
+<div class="callout"><strong>Arbeitsmuster:</strong> Formuliere zunächst, welche Zeilen und Spalten du brauchst. Setze dann pro Pipe-Schritt genau eine verständliche Operation um und kontrolliere das Ergebnis mit <code>head()</code>, <code>glimpse()</code> oder <code>count()</code>.</div>
+<h2>Lernaufgaben</h2><ol><li>Wähle aus <code>studenten</code> die Spalten <code>region</code>, <code>fachgebiet</code> und <code>gesamt</code> aus. Prüfe die ersten Zeilen.</li><li>Filtere die Daten auf <code>fachgebiet == "Insgesamt"</code> und Regionen, deren Name nicht „Deutschland“ ist.</li><li>Erstelle die Variable <code>ausland_quote</code> als Quotient aus <code>ausland_gesamt</code> und <code>gesamt</code>. Wie viele fehlende oder nicht endliche Werte entstehen?</li><li>Erzeuge mit <code>case_when()</code> eine Kategorie für kleine, mittlere und große Studierendenzahlen. Begründe deine Grenzwerte.</li><li>Vergleiche <code>filter(!is.na(gesamt))</code> mit <code>na.omit()</code>: Warum können die Ergebnisse unterschiedlich viele Zeilen enthalten?</li></ol><details><summary>Musterlösung zu Aufgabe 1</summary><pre><code>studenten |>
+  select(region, fachgebiet, gesamt) |>
+  head()</code></pre></details><p class="next"><a href="02-explorative-statistik.html">← Zurück</a><a href="04-daten-strukturieren-inferenz.html">Weiter: Strukturieren &amp; Inferenz →</a></p><footer>Business Analytics · R-Lernpfad</footer></div></main></div></body></html>
