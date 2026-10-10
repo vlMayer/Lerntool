@@ -1,23 +1,30 @@
-<!DOCTYPE html>
-<html lang="de"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>09 · Module und Abschlussprojekt | Lerntool</title><style>:root{color-scheme:dark;--bg:#0b1020;--panel:#141c30;--text:#edf2ff;--muted:#aab7d2;--accent:#79d7c2;--line:#2b3957}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:16px/1.7 system-ui,sans-serif}.wrap{max-width:850px;margin:auto;padding:28px 22px 60px}a{color:var(--accent)}p,li{color:var(--muted)}h1{font-size:2.5rem;line-height:1.1}.tag{color:var(--accent);text-transform:uppercase;font-size:.8rem;font-weight:bold}pre{overflow:auto;background:#080d19;border:1px solid var(--line);padding:16px;border-radius:12px}code{color:#bcefe3;font-family:ui-monospace,monospace}.box{background:var(--panel);border:1px solid var(--line);padding:16px;border-radius:12px;margin:18px 0}.nav{display:flex;justify-content:space-between;border-top:1px solid var(--line);padding-top:20px;margin-top:38px}</style></head><body><main class="wrap"><a href="../index.html">← Zur Kursübersicht</a><p class="tag">Lektion 09 von 09</p><h1>Module und dein erstes Mini-Projekt</h1><p>Ein Modul ist eine Datei mit wiederverwendbarem Python-Code. Python bringt viele Module mit. Mit <code>import</code> bindest du sie ein.</p><pre><code>import random
+<!doctype html>
+<html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Python: Module und Abschlussprojekt</title><link rel="stylesheet" href="../r/r-style.css"></head><body><div class="layout"><aside class="sidebar"><a class="brand" href="../index.html">← Lerntool</a><p class="course">Python</p><nav><a href="01-start.html">01 · Start</a><a href="02-variablen.html">02 · Variablen</a><a href="03-eingaben.html">03 · Eingaben</a><a href="04-verzweigungen.html">04 · Verzweigungen</a><a href="05-schleifen.html">05 · Schleifen</a><a href="06-datenstrukturen.html">06 · Datenstrukturen</a><a href="07-funktionen.html">07 · Funktionen</a><a href="08-fehler-dateien.html">08 · Fehler &amp; Dateien</a><a class="active" href="09-module-projekt.html">09 · Module &amp; Projekt</a></nav><a class="back" href="../index.html">Zur Startseite</a></aside><main><div class="content"><div class="eyebrow">Modul 09 · Zusammenführen</div><h1>Module und Abschlussprojekt</h1><p class="lead">Module teilen Programme in wiederverwendbare Dateien auf. Im Abschlussprojekt verbindest du Variablen, Eingaben, Verzweigungen, Schleifen, Funktionen und Listen zu einem kleinen Quiz.</p><h2>Ein eigenes Modul</h2><p>Speichere wiederverwendbare Funktionen in einer Python-Datei. Liegen Modul und Programm im selben Ordner, kann das Programm das Modul importieren.</p><pre><code># datei: rechenhilfe.py
+def addiere(a, b):
+    return a + b
 
-geheimzahl = random.randint(1, 5)
-print(geheimzahl)</code></pre><p>Hier stellt das Modul <code>random</code> unter anderem die Funktion <code>randint()</code> bereit. Für ein kleines eigenes Projekt kombinierst du Variablen, Eingaben, Bedingungen, Schleifen und Funktionen.</p><h2>Projekt: Mini-Quiz</h2><p>Das Quiz stellt Fragen, vergleicht die Antworten und zählt die Punkte. Tippe den Code selbst ab und ergänze danach eigene Fragen.</p><pre><code>def stelle_frage(frage, loesung):
-    antwort = input(frage + " ").strip().lower()
-    if antwort == loesung.lower():
-        print("Richtig!")
-        return 1
-    print(f"Noch nicht. Die richtige Antwort ist: {loesung}")
-    return 0
+# datei: main.py
+import rechenhilfe
+print(rechenhilfe.addiere(3, 4))</code></pre><p>Die Datei-Endung <code>.py</code> gehört nicht in den Modulnamen beim Import. Standardbibliotheken wie <code>math</code> und <code>random</code> lassen sich auf dieselbe Weise importieren.</p><h2>Abschlussprojekt: Mini-Quiz</h2><p>Erstelle ein Quiz mit mehreren Fragen. Zähle richtige Antworten, gib am Ende die Punktzahl aus und verwende eine Funktion, damit die Frage-Antwort-Prüfung wiederverwendbar ist.</p><pre><code>def stelle_frage(frage, antwort):
+    eingabe = input(frage + " ").strip().lower()
+    return eingabe == antwort.lower()
 
 fragen = [
     ("Welche Funktion gibt Text aus?", "print"),
-    ("Welches Schlüsselwort definiert eine Funktion?", "def"),
-    ("Welcher Typ speichert Wahr oder Falsch?", "bool"),
+    ("Wie beginnt ein Kommentar?", "#"),
+    ("Welcher Typ speichert ganze Zahlen?", "int"),
 ]
-
 punkte = 0
-for frage, loesung in fragen:
-    punkte += stelle_frage(frage, loesung)
-
-print(f"Du hast {punkte} von {len(fragen)} Punkten.")</code></pre><h2>Erweiterungen</h2><ul><li>Füge mindestens zwei eigene Fragen hinzu.</li><li>Zeige am Ende eine Nachricht abhängig von der Punktzahl.</li><li>Erlaube pro Frage einen zweiten Versuch.</li><li>Speichere Fragen später in einer Datei und lies sie beim Start ein.</li></ul><div class="box"><b>Du hast die Grundlagen durchgearbeitet.</b><p>Als Nächstes kannst du das Projekt erweitern, eigene Programme bauen und gezielt Bibliotheken für deine Ideen kennenlernen. Nutze die <a href="../index.html">Kursübersicht</a>, um Lektionen zu wiederholen.</p></div><nav class="nav"><a href="08-fehler-dateien.html">← Fehler & Dateien</a><a href="../index.html">Zur Kursübersicht →</a></nav></main></body></html>
+for frage, antwort in fragen:
+    if stelle_frage(frage, antwort):
+        print("Richtig!")
+        punkte += 1
+    else:
+        print("Leider falsch.")
+print(f"Ergebnis: {punkte}/{len(fragen)}")</code></pre><h2>Projekt erweitern</h2><ul><li>Füge Fragen hinzu und akzeptiere mehrere richtige Schreibweisen.</li><li>Prüfe Eingaben und verhindere, dass ein leeres Quiz zu einem Fehler führt.</li><li>Speichere Fragen in einer Datei und lade sie beim Programmstart.</li><li>Teile das Quiz in Module für Fragen, Auswertung und Programmstart auf.</li></ul><div class="callout"><strong>Abschluss:</strong> Ein gutes kleines Projekt ist verständlich, testbar und in Funktionen aufgeteilt. Ergänze Kommentare dort, wo sie den Zweck einer Entscheidung erklären.</div><h2>Lernaufgaben</h2><ol><li>Schreibe eine Datei <code>rechenhilfe.py</code> mit den Funktionen <code>addiere()</code> und <code>multipliziere()</code>. Importiere das Modul in einem zweiten Skript.</li><li>Baue im Quiz eine dritte Antwortmöglichkeit „überspringen“ ein und werte sie gesondert aus.</li><li>Ergänze eine Funktion, die abhängig vom Punktestand eine Rückmeldung ausgibt.</li><li>Teste dein Programm mit richtigen, falschen und leeren Eingaben. Beschreibe einen gefundenen Fehler und seine Behebung.</li></ol><details><summary>Musterlösung zu Aufgabe 3</summary><pre><code>def rueckmeldung(punkte, anzahl):
+    quote = punkte / anzahl if anzahl else 0
+    if quote == 1:
+        return "Perfekt!"
+    elif quote >= 0.5:
+        return "Gut gemacht!"
+    return "Weiter üben!"</code></pre></details><p class="next"><a href="08-fehler-dateien.html">← Zurück</a><a href="../index.html">Zur Startseite →</a></p><footer>Python · Grundlagen-Lernpfad</footer></div></main></div></body></html>

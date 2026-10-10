@@ -1,18 +1,13 @@
-<!DOCTYPE html>
-<html lang="de"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>06 · Datenstrukturen | Lerntool</title><style>:root{color-scheme:dark;--bg:#0b1020;--panel:#141c30;--text:#edf2ff;--muted:#aab7d2;--accent:#79d7c2;--line:#2b3957}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:16px/1.7 system-ui,sans-serif}.wrap{max-width:850px;margin:auto;padding:28px 22px 60px}a{color:var(--accent)}p,li{color:var(--muted)}h1{font-size:2.5rem;line-height:1.1}.tag{color:var(--accent);text-transform:uppercase;font-size:.8rem;font-weight:bold}pre{overflow:auto;background:#080d19;border:1px solid var(--line);padding:16px;border-radius:12px}code{color:#bcefe3;font-family:ui-monospace,monospace}.box{background:var(--panel);border:1px solid var(--line);padding:16px;border-radius:12px;margin:18px 0}.nav{display:flex;justify-content:space-between;border-top:1px solid var(--line);padding-top:20px;margin-top:38px}</style></head><body><main class="wrap"><a href="../index.html">← Zur Kursübersicht</a><p class="tag">Lektion 06 von 09</p><h1>Listen und andere Sammlungen</h1><p>Datenstrukturen halten mehrere Werte zusammen. Eine <code>list</code> ist geordnet und veränderbar. Die Zählung beginnt bei Index 0.</p><pre><code>spiele = ["Portal", "Minecraft", "Celeste"]
-print(spiele[0])  # Portal
-spiele.append("Hades")
-spiele[1] = "Stardew Valley"
-print(len(spiele))</code></pre><p><code>append()</code> fügt hinten etwas an, <code>len()</code> zählt die Elemente. Ein Index außerhalb der Liste führt zu einem Fehler.</p><h2>Tupel, Dictionaries und Sets</h2><pre><code>position = (4, 7)  # Tupel: geordnete, nicht veränderbare Werte
-person = {"name": "Sam", "alter": 22}  # Dictionary: Schlüssel und Werte
-farben = {"blau", "grün", "blau"}  # Set: eindeutige Werte
+<!doctype html>
+<html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Python: Datenstrukturen</title><link rel="stylesheet" href="../r/r-style.css"></head><body><div class="layout"><aside class="sidebar"><a class="brand" href="../index.html">← Lerntool</a><p class="course">Python</p><nav><a href="01-start.html">01 · Start</a><a href="02-variablen.html">02 · Variablen</a><a href="03-eingaben.html">03 · Eingaben</a><a href="04-verzweigungen.html">04 · Verzweigungen</a><a href="05-schleifen.html">05 · Schleifen</a><a class="active" href="06-datenstrukturen.html">06 · Datenstrukturen</a><a href="07-funktionen.html">07 · Funktionen</a><a href="08-fehler-dateien.html">08 · Fehler &amp; Dateien</a><a href="09-module-projekt.html">09 · Module &amp; Projekt</a></nav><a class="back" href="../index.html">Zur Startseite</a></aside><main><div class="content"><div class="eyebrow">Modul 06 · Sammlungen</div><h1>Datenstrukturen</h1><p class="lead">Listen, Tupel, Dictionaries und Sets speichern mehrere Werte. Die Wahl der Struktur hängt davon ab, ob Reihenfolge, Veränderbarkeit, eindeutige Werte oder Schlüssel-Wert-Zuordnungen gebraucht werden.</p><h2>Listen</h2><pre><code>spiele = ["Portal", "Hades", "Celeste"]
+spiele.append("Hollow Knight")
+print(spiele[0])
+print(len(spiele))</code></pre><p>Listen sind geordnet und veränderbar. Der erste Index ist <code>0</code>; negative Indizes zählen vom Ende aus.</p><h2>Tupel und Sets</h2><pre><code>koordinate = (50.8, 7.2)  # Tupel: geordnet, unveränderbar
+farben = {"rot", "blau", "rot"}  # Set: eindeutige Werte
+print(farben)</code></pre><h2>Dictionaries</h2><pre><code>person = {"name": "Mira", "alter": 21}
 print(person["name"])
-print("grün" in farben)</code></pre><ul><li>Verwende eine Liste für eine geordnete, veränderbare Sammlung.</li><li>Verwende ein Tupel für eine geordnete Sammlung, die nach dem Anlegen unverändert bleiben soll.</li><li>Verwende ein Dictionary, wenn Werte über Schlüssel wie <code>"name"</code> gefunden werden.</li><li>Verwende ein Set, wenn Eindeutigkeit wichtig ist und Duplikate entfallen sollen.</li></ul><h2>Durch Sammlungen iterieren</h2><pre><code>noten = [2, 1, 3]
-for note in noten:
-    print(note)
-
-for schluessel, wert in person.items():
-    print(schluessel, wert)</code></pre><div class="box"><b>Übung</b><p>Erstelle eine Liste mit drei Lieblingsfilmen, füge einen vierten hinzu und gib alle Titel nummeriert aus.</p><details><summary>Lösung ansehen</summary><pre><code>filme = ["Film A", "Film B", "Film C"]
-filme.append("Film D")
-for nummer, film in enumerate(filme, start=1):
-    print(f"{nummer}. {film}")</code></pre></details></div><nav class="nav"><a href="05-schleifen.html">← Schleifen</a><a href="07-funktionen.html">Weiter: Funktionen →</a></nav></main></body></html>
+person["stadt"] = "Bonn"</code></pre><p>Ein Dictionary ordnet jedem Schlüssel einen Wert zu. Schlüssel sind eindeutig; Werte können aktualisiert werden.</p><h2>Über Sammlungen iterieren</h2><pre><code>preise = [2.5, 4.0, 3.25]
+for preis in preise:
+    print(preis)</code></pre><div class="callout"><strong>Auswahlhilfe:</strong> Verwende eine Liste für eine veränderbare Reihenfolge, ein Tupel für eine feste Sammlung, ein Set für eindeutige Werte und ein Dictionary für Nachschlagen über Schlüssel.</div><h2>Lernaufgaben</h2><ol><li>Erstelle eine Liste mit vier Lieblingsfilmen. Gib das zweite Element aus und ergänze einen fünften Film.</li><li>Erzeuge aus einer Liste mit doppelten Zahlen ein Set. Was passiert mit Duplikaten?</li><li>Lege ein Dictionary für ein Buch mit Titel, Autor und Erscheinungsjahr an. Ändere das Jahr und gib den Titel aus.</li></ol><details><summary>Musterlösung zu Aufgabe 3</summary><pre><code>buch = {"titel": "Dune", "autor": "Frank Herbert", "jahr": 1965}
+buch["jahr"] = 2021
+print(buch["titel"])</code></pre></details><p class="next"><a href="05-schleifen.html">← Zurück</a><a href="07-funktionen.html">Weiter: Funktionen →</a></p><footer>Python · Grundlagen-Lernpfad</footer></div></main></div></body></html>

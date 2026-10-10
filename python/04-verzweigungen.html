@@ -1,20 +1,18 @@
-<!DOCTYPE html>
-<html lang="de"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>04 · Entscheidungen | Lerntool</title><style>:root{color-scheme:dark;--bg:#0b1020;--panel:#141c30;--text:#edf2ff;--muted:#aab7d2;--accent:#79d7c2;--line:#2b3957}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:16px/1.7 system-ui,sans-serif}.wrap{max-width:850px;margin:auto;padding:28px 22px 60px}a{color:var(--accent)}p,li{color:var(--muted)}h1{font-size:2.5rem;line-height:1.1}.tag{color:var(--accent);text-transform:uppercase;font-size:.8rem;font-weight:bold}pre{overflow:auto;background:#080d19;border:1px solid var(--line);padding:16px;border-radius:12px}code{color:#bcefe3;font-family:ui-monospace,monospace}.box{background:var(--panel);border:1px solid var(--line);padding:16px;border-radius:12px;margin:18px 0}.nav{display:flex;justify-content:space-between;border-top:1px solid var(--line);padding-top:20px;margin-top:38px}</style></head><body><main class="wrap"><a href="../index.html">← Zur Kursübersicht</a><p class="tag">Lektion 04 von 09</p><h1>Entscheidungen mit if</h1><p>Mit Bedingungen lässt du dein Programm abhängig von Werten unterschiedliche Wege nehmen. Python wertet die Bedingung als wahr oder falsch aus.</p><pre><code>temperatur = 18
-if temperatur &gt;= 20:
-    print("Es ist warm genug.")
-else:
-    print("Nimm eine Jacke mit.")</code></pre><p>Der Doppelpunkt beginnt den eingerückten Block. Die Einrückung zeigt Python, welche Anweisungen zu welchem Zweig gehören. Verwende innerhalb eines Blocks konsistent vier Leerzeichen.</p><h2>Mehrere Fälle</h2><pre><code>punkte = 76
-if punkte &gt;= 90:
+<!doctype html>
+<html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Python: Verzweigungen</title><link rel="stylesheet" href="../r/r-style.css"></head><body><div class="layout"><aside class="sidebar"><a class="brand" href="../index.html">← Lerntool</a><p class="course">Python</p><nav><a href="01-start.html">01 · Start</a><a href="02-variablen.html">02 · Variablen</a><a href="03-eingaben.html">03 · Eingaben</a><a class="active" href="04-verzweigungen.html">04 · Verzweigungen</a><a href="05-schleifen.html">05 · Schleifen</a><a href="06-datenstrukturen.html">06 · Datenstrukturen</a><a href="07-funktionen.html">07 · Funktionen</a><a href="08-fehler-dateien.html">08 · Fehler &amp; Dateien</a><a href="09-module-projekt.html">09 · Module &amp; Projekt</a></nav><a class="back" href="../index.html">Zur Startseite</a></aside><main><div class="content"><div class="eyebrow">Modul 04 · Entscheidungen</div><h1>Verzweigungen mit if</h1><p class="lead">Mit <code>if</code>, <code>elif</code> und <code>else</code> führt ein Programm abhängig von Bedingungen unterschiedliche Anweisungen aus.</p><h2>Eine Bedingung</h2><pre><code>temperatur = 22
+if temperatur > 20:
+    print("Es ist warm.")</code></pre><p>Nach der Bedingung steht ein Doppelpunkt. Der eingerückte Block gehört zur Verzweigung.</p><h2>Mehrere Fälle</h2><pre><code>punkte = 78
+if punkte >= 90:
     note = "sehr gut"
-elif punkte &gt;= 70:
+elif punkte >= 75:
     note = "gut"
 else:
     note = "weiter üben"
-print(note)</code></pre><h2>Vergleiche und Logik</h2><ul><li><code>==</code> gleich, <code>!=</code> ungleich.</li><li><code>&lt;</code>, <code>&lt;=</code>, <code>&gt;</code>, <code>&gt;=</code> vergleichen Zahlen oder passende Werte.</li><li><code>and</code> verlangt, dass beide Bedingungen wahr sind; <code>or</code> genügt, wenn mindestens eine wahr ist; <code>not</code> kehrt einen Wahrheitswert um.</li></ul><pre><code>alter = 21
+print(note)</code></pre><p>Python prüft die Bedingungen der Reihe nach und führt den ersten passenden Zweig aus. Vergleichsoperatoren sind <code>==</code>, <code>!=</code>, <code>&lt;</code>, <code>&gt;</code>, <code>&lt;=</code> und <code>&gt;=</code>. Für logische Kombinationen gibt es <code>and</code>, <code>or</code> und <code>not</code>.</p><pre><code>alter = 20
 hat_ticket = True
-if alter &gt;= 18 and hat_ticket:
-    print("Einlass möglich")</code></pre><div class="box"><b>Übung</b><p>Lies ein Alter ein. Gib aus, ob die Person minderjährig oder volljährig ist.</p><details><summary>Lösung ansehen</summary><pre><code>alter = int(input("Wie alt bist du? "))
-if alter &gt;= 18:
-    print("Volljährig")
+if alter >= 18 and hat_ticket:
+    print("Zutritt möglich")</code></pre><div class="callout"><strong>Achtung:</strong> <code>=</code> weist einen Wert zu; <code>==</code> vergleicht zwei Werte. Die Einrückung legt fest, welcher Code zu welchem Zweig gehört.</div><h2>Lernaufgaben</h2><ol><li>Prüfe, ob eine eingegebene Zahl positiv, negativ oder null ist.</li><li>Gib abhängig von einer Punktzahl eine passende Kategorie aus: ab 90 „sehr gut“, ab 75 „gut“, sonst „noch üben“.</li><li>Prüfe mit einer kombinierten Bedingung, ob eine Zahl zwischen 10 und 20 einschließlich liegt.</li></ol><details><summary>Musterlösung zu Aufgabe 3</summary><pre><code>zahl = int(input("Zahl: "))
+if 10 <= zahl <= 20:
+    print("liegt im Bereich")
 else:
-    print("Minderjährig")</code></pre></details></div><nav class="nav"><a href="03-eingaben.html">← Eingaben</a><a href="05-schleifen.html">Weiter: Schleifen →</a></nav></main></body></html>
+    print("liegt außerhalb")</code></pre></details><p class="next"><a href="03-eingaben.html">← Zurück</a><a href="05-schleifen.html">Weiter: Schleifen →</a></p><footer>Python · Grundlagen-Lernpfad</footer></div></main></div></body></html>
